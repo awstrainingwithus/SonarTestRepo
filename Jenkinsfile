@@ -16,14 +16,15 @@ pipeline{
    stage('Compile-Package'){
       steps{
        script{
-		 sh "mvn -version"
-         sh "mvn package"
-		 echo "Maven Compile Stage is completed"
+	 sh "mvn -version"
+         sh "mvn clean test"
+	 sh "mvn compile"
+	 echo "Maven Compile Stage is completed"
 	 }
    }
    }
    
-   stage('SonarQube Analysis') {
+ /*  stage('SonarQube Analysis') {
       steps{
          script{
          
@@ -51,7 +52,7 @@ pipeline{
 		  }
 	  }
           }
-      }    
+      }    */
    
 }
 }
