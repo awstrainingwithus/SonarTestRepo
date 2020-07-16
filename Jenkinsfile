@@ -41,15 +41,11 @@ pipeline{
 			  sleep (120)
               def qg = waitForQualityGate()
               if (qg.status != 'OK') {
-                   slackSend channel: '#testchannel',
-                   color: 'danger', 
-                   message: 'SonarQube Analysis Failed' 
+	      echo "Quality gate failed"
                   error "Pipeline aborted due to quality gate failure: ${qg.status}"
               }
 		if (qg.status != 'FAILURE') {
-                   slackSend channel: '#testchannel',
-                   color: 'good', 
-                   message: 'SonarQube Analysis Success'
+	      echo "Quality gate passed"
                   
               }
 		  }
