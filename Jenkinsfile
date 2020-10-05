@@ -1,7 +1,7 @@
 pipeline{
    agent any
    tools {
-        maven "mymaven" 
+        maven "maven363" 
     }
    stages{
    stage('Checkout'){
@@ -28,7 +28,7 @@ pipeline{
       steps{
          script{
          
-        withSonarQubeEnv('SonarServer') { 
+        withSonarQubeEnv('sonar') { 
           sh "mvn sonar:sonar"
 	}
         }
